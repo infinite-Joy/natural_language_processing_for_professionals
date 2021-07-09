@@ -1,0 +1,2 @@
+# natural_language_processing_for_professionals
+educative course for natural language processing for professionals
