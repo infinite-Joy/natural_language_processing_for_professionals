@@ -18,19 +18,19 @@ def positional_encoding(position, d_model):
     return tf.cast(pos_encoding, dtype=tf.float32)
 
 
-import matplotlib.pyplot as plt
-n, d = 2048, 512
-pos_encoding = positional_encoding(n, d)
-print(pos_encoding.shape)
-pos_encoding = pos_encoding[0]
-
-# Juggle the dimensions for the plot
-pos_encoding = tf.reshape(pos_encoding, (n, d//2, 2))
-pos_encoding = tf.transpose(pos_encoding, (2, 1, 0))
-pos_encoding = tf.reshape(pos_encoding, (d, n))
-
-plt.pcolormesh(pos_encoding, cmap='RdBu')
-plt.ylabel('Depth')
-plt.xlabel('Position')
-plt.colorbar()
-plt.show()
+#import matplotlib.pyplot as plt
+#n, d = 2048, 512
+#pos_encoding = positional_encoding(n, d)
+#print(pos_encoding.shape)
+#pos_encoding = pos_encoding[0]
+#
+## Juggle the dimensions for the plot
+#pos_encoding = tf.reshape(pos_encoding, (n, d//2, 2))
+#pos_encoding = tf.transpose(pos_encoding, (2, 1, 0))
+#pos_encoding = tf.reshape(pos_encoding, (d, n))
+#
+#plt.pcolormesh(pos_encoding, cmap='RdBu')
+#plt.ylabel('Depth')
+#plt.xlabel('Position')
+#plt.colorbar()
+#plt.show()
