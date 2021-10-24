@@ -22,4 +22,4 @@ df = getDF('/app/Video_Games_5.json')
 df = df[['reviewText', 'overall']]
 df = df.dropna()
 df = df.drop_duplicates()
-df.to_csv('./Video_Games_5.csv')
+df.to_csv('./Video_Games_5.csv', index=False)
