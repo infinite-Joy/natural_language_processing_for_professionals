@@ -7,12 +7,14 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-RUN wget http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/Video_Games_5.json.gz \
-	&& gunzip Video_Games_5.json.gz
-RUN wget https://nlp.stanford.edu/data/glove.6B.zip && unzip glove.6B.zip
+# models are already downloaded
+#RUN wget http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/Video_Games_5.json.gz
+#RUN wget https://nlp.stanford.edu/data/glove.6B.zip && unzip glove.6B.zip
 
 ADD . /app
 
+RUN gunzip Video_Games_5.json.gz
+RUN unzip glove.6B.zip
 RUN pip install poetry==1.1.7
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
@@ -23,6 +25,9 @@ RUN python -m nltk.downloader averaged_perceptron_tagger
 RUN python -m nltk.downloader stopwords
 RUN python -m nltk.downloader punkt
 RUN python -m nltk.downloader wordnet
+
+# download models
+RUN python load_use.py
 
 # data preprocessing
 RUN python process_to_csv.py
