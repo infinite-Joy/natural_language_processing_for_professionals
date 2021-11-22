@@ -1,6 +1,6 @@
 # text preprocessing modules
 # text preprocessing modules
-from fastapi import FastAPI 
+from fastapi import FastAPI
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification, TextClassificationPipeline
 
@@ -35,6 +35,16 @@ print(x_dict)
 x_dict = nlp_pipe('I hate this game')
 print(x_dict)
 
+def text_preprocessing(text):
+    """
+    Preprocess the text for better understanding
+
+    """
+    if isinstance(text, str):
+        text = text.strip()
+        text = text.lower()
+    return text
+
 @app.get("/predict-review")
 def predict_sentiment(review: str):
     """
@@ -44,6 +54,7 @@ def predict_sentiment(review: str):
     :return: prediction, probabilities
     """
     # perform prediction
+    review = text_preprocessing(review)
     prediction = nlp_pipe(review)
     if prediction:
         return prediction
