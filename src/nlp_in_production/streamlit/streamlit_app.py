@@ -3,10 +3,7 @@ from transformers import BertTokenizer, BertForSequenceClassification, TextClass
 
 
 # the model we gonna train, base uncased BERT
-# check text classification models here: https://huggingface.co/models?filter=text-classification
-model_name = "bert-base-uncased"
-model_name = "rest_api/models/transformer_model/"
-# max sequence length for each document/sentence sample
+model_name = "transformer_model/"
 max_length = 128
 
 
