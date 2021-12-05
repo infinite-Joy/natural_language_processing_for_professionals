@@ -15,7 +15,8 @@ ADD . /app
 
 RUN gunzip Video_Games_5.json.gz
 RUN unzip glove.6B.zip
-RUN pip install poetry==1.1.7
+RUN pip install poetry==1.1.12
+# RUN pip install poetry==1.1.7
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 

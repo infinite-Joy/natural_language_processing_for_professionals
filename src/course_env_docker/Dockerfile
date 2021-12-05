@@ -1,4 +1,4 @@
-FROM docker.io/infinitejoy1/natural_language_processing_for_professionals:v1.1
+FROM docker.io/infinitejoy1/natural_language_processing_for_professionals:v1.2
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE 1
