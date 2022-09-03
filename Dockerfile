@@ -48,4 +48,4 @@ COPY     config.py /root/.jupyter/jupyter_notebook_config.py
 COPY     src/ /usr/local/notebooks/
 
 # data processing
-RUN python process_to_csv.py
+RUN python3 process_to_csv.py
