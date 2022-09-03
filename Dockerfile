@@ -46,3 +46,6 @@ COPY     config.py /root/.jupyter/jupyter_notebook_config.py
 # Add ipynb files
 # this will work because src is part of the tar file
 COPY     src/ /usr/local/notebooks/
+
+# data processing
+RUN python process_to_csv.py
