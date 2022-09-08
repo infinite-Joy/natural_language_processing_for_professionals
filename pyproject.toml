@@ -26,6 +26,7 @@ nlpaug = "^1.1.4"
 transformers = "^4.8.2"
 imbalanced-learn = "^0.9.1"
 wandb = "^0.13.2"
+fasttext = "^0.9.2"
 
 [tool.poetry.dev-dependencies]
 

@@ -118,6 +118,18 @@ python-versions = "*"
 six = ">=1.4.0"
 
 [[package]]
+name = "fasttext"
+version = "0.9.2"
+description = "fasttext Python bindings"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+numpy = "*"
+pybind11 = ">=2.2"
+
+[[package]]
 name = "filelock"
 version = "3.0.12"
 description = "A platform independent file lock."
@@ -598,6 +610,17 @@ python-versions = "*"
 
 [package.dependencies]
 pyasn1 = ">=0.4.6,<0.5.0"
+
+[[package]]
+name = "pybind11"
+version = "2.10.0"
+description = "Seamless operability between C++11 and Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+global = ["pybind11-global (==2.10.0)"]
 
 [[package]]
 name = "pydantic"
@@ -1299,7 +1322,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "7f5e0585eb613bc6ccfaca306762d2b96376139ab0abf5ff7e9ae96244238fee"
+content-hash = "5514fe6f94a3c3b6bdfab712955cfe24aa00aa5516a72781b98b175d74a2d73a"
 
 [metadata.files]
 absl-py = []
@@ -1315,6 +1338,7 @@ cycler = []
 cymem = []
 cython = []
 docker-pycreds = []
+fasttext = []
 filelock = []
 flatbuffers = []
 gast = []
@@ -1354,6 +1378,7 @@ protobuf = []
 psutil = []
 pyasn1 = []
 pyasn1-modules = []
+pybind11 = []
 pydantic = []
 pyparsing = []
 pyphen = []
