@@ -19,6 +19,10 @@ WORKDIR /app
 
 RUN wget http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/Video_Games_5.json.gz \
 	&& gunzip Video_Games_5.json.gz
+RUN wget https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip \
+	&& unzip wiki.en.zip
+RUN wget http://nlp.stanford.edu/data/glove.840B.300d.zip \
+	&& unzip glove.840B.300d.zip
 #RUN wget https://nlp.stanford.edu/data/glove.6B.zip && unzip glove.6B.zip
 RUN git clone https://github.com/infinite-Joy/natural_language_processing_for_professionals.git
 RUN ls -ltr
