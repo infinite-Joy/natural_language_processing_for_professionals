@@ -5,6 +5,7 @@ FROM    ubuntu:20.04
 # Install the following packages
 RUN     apt-get update && apt-get install software-properties-common -y &&\
 	apt-get install -y wget && apt-get install -y git &&\
+	apt-get install -y zip && apt-get install -y unzip &&\
         add-apt-repository ppa:deadsnakes/ppa && apt-get update &&\
         apt-get install python3.8 -y &&apt install python3-pip -y &&\
         pip3 install --upgrade pip && pip3 install jupyter &&\
