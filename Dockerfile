@@ -1,5 +1,6 @@
 # Base container image, which has the Ubuntu Linux distribution and Nodejs pre-installed
 # command: tar -czvf jupyter.tar.gz Dockerfile config.py src/ pyproject.toml poetry.lock
+# docker command: docker build -t natural_language_processing_for_professionals:v1.3 .
 FROM    ubuntu:20.04
 
 # Install the following packages
@@ -18,31 +19,40 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-RUN wget http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/Video_Games_5.json.gz \
-	&& gunzip Video_Games_5.json.gz
-RUN wget https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip \
-	&& unzip wiki.en.zip
-RUN wget http://nlp.stanford.edu/data/glove.840B.300d.zip \
-	&& unzip glove.840B.300d.zip
-#RUN wget https://nlp.stanford.edu/data/glove.6B.zip && unzip glove.6B.zip
-RUN git clone https://github.com/infinite-Joy/natural_language_processing_for_professionals.git
-RUN ls -ltr
+# RUN wget http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/Video_Games_5.json.gz \
+# 	&& gunzip Video_Games_5.json.gz
+# RUN wget https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip \
+# 	&& unzip wiki.en.zip
+# RUN wget http://nlp.stanford.edu/data/glove.840B.300d.zip \
+# 	&& unzip glove.840B.300d.zip
+# #RUN wget https://nlp.stanford.edu/data/glove.6B.zip && unzip glove.6B.zip
+# RUN git clone https://github.com/infinite-Joy/natural_language_processing_for_professionals.git
+# RUN ls -ltr
 
 ADD . /app
 
+RUN ls -ltr /app/
+
+RUN gunzip /app/data/Video_Games_5.json.gz
+RUN unzip /app/data/glove.6B.zip -d /app/data/
+RUN unzip /app/data/wiki.en.zip -d /app/data/
+
+# remove unwanted files to reduce the image size
+RUN rm /app/data/glove.6B.zip /app/data/wiki.en.zip /app/data/glove.840B.300d.zip /app/data/glove.6B.100d.txt /app/data/glove.6B.200d.txt /app/data/glove.6B.300d.txt
+
 RUN ls -ltr
 
+# install poetry and python packages
 RUN pip install poetry==1.1.7
 RUN ls -ltr
 RUN poetry config virtualenvs.create false \
-  && poetry install --no-interaction --no-ansi
+	&& poetry install --no-interaction --no-ansi
 
 # Download required data
 RUN python3 -m spacy download en_core_web_sm
 RUN python3 -m nltk.downloader averaged_perceptron_tagger
 RUN python3 -m nltk.downloader stopwords
 RUN python3 -m nltk.downloader punkt
-RUN python3 -m nltk.downloader wordnet
 RUN python3 -m nltk.downloader wordnet
 
 # Add configuration file

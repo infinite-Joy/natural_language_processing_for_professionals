@@ -18,7 +18,7 @@ def getDF(path):
 
     return pd.DataFrame.from_dict(df, orient='index')
 
-df = getDF('/app/Video_Games_5.json')
+df = getDF('/app/data/Video_Games_5.json')
 df = df[['reviewText', 'overall']]
 df = df.dropna()
 df = df.drop_duplicates()
